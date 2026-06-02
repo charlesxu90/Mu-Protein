@@ -46,8 +46,10 @@ def main(args):
             trainer.load_checkpoint_strip(args.saved_model_dir)
         else:
             trainer.load_checkpoint(args.saved_model_dir)
+        # Upstream passed `model_label='Test'` here, but Trainer.test does not
+        # accept that kwarg — verbatim upstream call raises TypeError. Removed.
         test_results = trainer.test(
-            model_label='Test', mode='ensemble',
+            mode='ensemble',
             save_prediction=args.save_prediction,
         )
     else:
