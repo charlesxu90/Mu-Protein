@@ -170,3 +170,5 @@ dataset/
 # FLEXS
 paper_code/
 .github/
+
+results/
